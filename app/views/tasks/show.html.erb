@@ -1,0 +1,39 @@
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+<h2>Comments</h2>
+<table>
+  <tbody>
+    <% @task.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<strong>Add comment: </strong><br />
+<%= form_for [@meeting, @task, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_meeting_task_path(@task) %> |
+<%= link_to 'Back', meeting_path(@meeting) %>

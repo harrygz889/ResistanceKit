@@ -1,0 +1,30 @@
+<%= form_for(meeting) do |f| %>
+  <% if meeting.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :starts_on %>
+    <%= f.datetime_select :starts_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="location">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

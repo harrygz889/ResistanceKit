@@ -1,0 +1,47 @@
+<p>
+  <strong>Starts on:</strong>
+  <%= @meeting.starts_on %>
+</p>
+
+<h2>Attending Users</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @meeting.users.each do |user| %>
+      <tr>
+        <td><%= link_to user.email, profile_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Tasks</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @meeting.tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, meeting_task_path(@meeting, task) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Task', new_meeting_task_path(@meeting) %> <br /><br />
+
+<% if current_user && !current_user.meetings.include?(@meeting) %>
+  <p>
+    <%= link_to 'Join Event', join_meeting_path(@meeting) %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>

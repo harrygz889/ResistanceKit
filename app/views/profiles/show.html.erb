@@ -1,0 +1,28 @@
+<h1>User Profile</h1>
+
+<div class="user-info">
+Email: <%= @user.email %>
+</div>
+
+<h2>Events</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Location</th>
+      <th>Starts on</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.meetings.each do |meeting| %>
+      <tr>
+        <td><%= link_to meeting.name, meeting %></td>
+        <td><%= meeting.location %></td>
+        <td><%= meeting.starts_on %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Events', meetings_path %>
