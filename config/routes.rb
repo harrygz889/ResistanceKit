@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'meetings#index'
   get 'profiles/:id', to: 'profiles#show', as: :profile
   get 'join/:id', to: 'meetings#join', as: :join_meeting
+  resources :users
   resources :meetings do
     resources :action_items
     resources :tasks do

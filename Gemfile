@@ -38,8 +38,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 # add sprockets fixes rails 5 error
 gem 'sprockets', '3.6.3'
-
 gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem "fog-google"
+gem "google-api-client", ">= 0.6.2", "< 0.9"
+gem "mime-types"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
